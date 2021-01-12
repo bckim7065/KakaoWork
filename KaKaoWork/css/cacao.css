@@ -63,7 +63,6 @@ body{
     background: url(../img/header/img_logo_w.png) no-repeat 0 0;
     background-size: 148px 36px;
 }
-
 .scroll_header .link_title {
     background: url(../img/header/img_logo_b.png) no-repeat 0 0;
     background-size: 148px 36px;
@@ -90,7 +89,6 @@ body{
     font-weight: 500;
     line-height: 69px;
 }
-
 .scroll_header .doc-gnb .link_gnb {
     color: #1e1e1e;
 }
@@ -101,38 +99,31 @@ body{
     margin-bottom: -2px;
     box-sizing: border-box;
 }
-
 .second_slide .doc-gnb .link_gnb .txt_gnb {
     color:#1e1e1e;
 }
 .doc-gnb .link_gnb .txt_gnb:hover {
     border-bottom: 2px solid #0072e5;
 }
-
 .list_etc {
     float: right;
     font-size: 0;
     margin-top: 18px;
 }
-
 .list_etc li {
     display: inline-block;
 }
-
 .inner_header .list_etc .link_admin {
     color: hsla(0,0%,100%,.7);
     font-size: 13px;
     font-weight: 600;
 }
-
 .scroll_header .inner_header .list_etc .link_admin {
     color: #1e1e1e;
 }
-
 .second_slide .inner_header .list_etc .link_admin {
     color:black;
 }
-
 .inner_header .list_etc .link_download {
     display: block;
     width: 96px;
@@ -145,7 +136,6 @@ body{
     line-height: 34px;
     text-align: center;
 }
-
 .inner_header .list_etc li+li {
     margin-left: 22px;
 }
@@ -161,12 +151,10 @@ body{
     height: 100%;
     color: black;
 }
-
 .area_slide .wrap_slide div {
     height: 100%;
     box-sizing: border-box;
 }
-
  /* Slide Image Start */
 .area_slide .wrap_slide .slide_bg1 {
 }
@@ -182,14 +170,12 @@ body{
     line-height: 64px;
     letter-spacing: 0;
 }
-
 .area_slide .wrap_slide .slide_info1 a {
     display: block;
     height: 54px;
     margin-top: 50px;
     line-height: 54px;
 }
- 
 .area_slide .wrap_slide .slide_bg2 {
     background: #f3f4f6;
 }
@@ -205,14 +191,12 @@ body{
     line-height: 64px;
     letter-spacing: 0;
 }
-
 .area_slide .wrap_slide .slide_info2 a {
     display: block;
     height: 54px;
     margin-top: 50px;
     line-height: 54px;
 }
-
 .area_slide .wrap_slide .slide_bg3 {
     
 }
@@ -227,8 +211,7 @@ body{
     font-weight: 700;
     line-height: 64px;
     letter-spacing: 0;
- }
-
+}
 .area_slide .wrap_slide .slide_info3 a {
     display: block;
     height: 54px;
@@ -236,8 +219,6 @@ body{
     line-height: 54px;
 }
 /* Slide Image End */
-
- 
 /* 공통 버튼 */
 .btn_comm {
     display: block;
@@ -270,7 +251,6 @@ body{
     clear: both;
     content: '';
 }
-
 .section_intro .wrap_intro p:first-child {
     color:#1e1e1e;
     font-size: 38px;
@@ -278,14 +258,12 @@ body{
     letter-spacing: -1px;
     text-align: center;
 }
-
 .section_intro .wrap_intro .list_intro {
     margin-top: 66px;
 }
 .section_intro .wrap_intro .list_intro li {
     float: left;
 }
-
 .section_intro .wrap_intro .list_intro .intro_tit {
     display: block;
     font-size: 22px;
@@ -294,7 +272,6 @@ body{
     line-height: 28px;
     text-align: center;
 }
-
 .section_intro .wrap_intro .list_intro .intro_sub {
     margin-top: 12px;
     font-size: 14px;
@@ -368,11 +345,9 @@ body{
     width: 894px;
     margin: 0 auto;
 }
-
 .section_func .inner_func {
     position: relative;
 }
-
 .section_func .inner_func .wrap_info  {
     position: absolute;
     top: 0;
@@ -381,6 +356,7 @@ body{
     z-index: 100;
 }
 .section_func .inner_func .wrap_info .group_work {
+    min-width: 600px;
     height: 936px;
     padding-top: 160px;
     box-sizing: border-box;
@@ -394,11 +370,9 @@ body{
     height: 616px;
     box-sizing: border-box;
 }
-
 .section_func .group_work .inner_info {
     padding-top: 45px;
 }
-
 .section_func .group_work .inner_info::before {
     margin-bottom: 23px;
     display: block;
@@ -422,14 +396,12 @@ body{
     background-size: 520px 430px;
     background-position: -100px -70px;;
 }
-
 .section_func .group_connect {
     padding-top: 160px;
 }
 .section_func .group_connect .inner_info {
     padding-top: 60px;
 }
-
 .section_func .group_connect .inner_info::before {
     margin-bottom: 23px;
     display: block;
@@ -440,7 +412,6 @@ body{
     background-size: 520px 430px;
     background-position: -100px -140px;;
 }
-
 .section_func .group_search .inner_info .info_tit, 
 .section_func .group_work .inner_info .info_tit,
 .section_func .group_connect .inner_info .info_tit {
@@ -449,7 +420,6 @@ body{
     font-weight: 700;
     letter-spacing: -1px;
 }
-
 .section_func .group_search .inner_info .info_sub, 
 .section_func .group_work .inner_info .info_sub,
 .section_func .group_connect .inner_info .info_sub {
@@ -458,7 +428,6 @@ body{
     font-size: 16px;
     font-weight: 350
 }
-
 .group_work .inner_info .tabfunc,
 .group_connect .inner_info .tabfunc  {
     position: relative;
@@ -489,12 +458,10 @@ body{
 }
 .group_work .inner_info .tabfunc .list_func li {
 }
-
 .group_work .inner_info .tabfunc .list_func li+li,
 .group_connect .inner_info .tabfunc .list_func li+li {
     margin-top: 15px;
 }
-
 .group_work .inner_info .tabfunc .list_func .link_func,
 .group_connect .inner_info .tabfunc .list_func .link_func {
     display: block;
@@ -504,19 +471,43 @@ body{
     font-weight: 700;
     line-height: 17px;
 }
-
-.frame_phone {
-    float: right;
+.wrap_phone {
+    position: relative;
 }
 
+.wrap_phone::after {    
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.inner_phone {
+    position: relative;
+    width: 100%;    
+    text-align: right;
+}
+
+.inner_phone::after {    
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.frame_phone {
+    width: 296px;
+    display: inline-block;
+}
 .frame_phone .item_img {
+    display: inline-block;
     position: relative;
     margin-top: 160px;
-    width: 282px;
+    width: 100%;
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
-
+.frame_phone .item_img+.item_img {
+    margin-top: 250px;
+}
 .frame_phone .item_active {
     opacity: 1;
 }
@@ -529,6 +520,7 @@ body{
 }
 .frame_phone .item_img:nth-child(2)::before {
     position: absolute;
+    left: 0;
     top: 50%;
     z-index: 70;
     width: 397px;
@@ -549,7 +541,6 @@ body{
     z-index: -5;
     content: "";
 }
-
 .group_work .mark_on {
     position: absolute;
     top: 0;
@@ -562,7 +553,12 @@ body{
     transform: translateY(0);
     transition: transform 0.5s;
 }
-
+.group_work .second {
+    transform: translateY(36px);
+}
+.group_work .third {
+    transform: translateY(72px);
+}
 .group_connect .mark_on {
     position: absolute;
     top: 0;
@@ -575,7 +571,12 @@ body{
     transform: translateY(0);
     transition: transform 0.5s;
 }
-
+.group_connect .second {
+    transform: translateY(36px);
+}
+.group_connect .third {
+    transform: translateY(72px);
+}
 .section_desc {
     position: relative;
 }
@@ -603,7 +604,6 @@ body{
     height: 665px;
     opacity: 0;
 } 
-
 .section_desc img {
     position: absolute;
 }
@@ -669,6 +669,10 @@ body{
     transform: translateY(50px);
     transition: all 0.5s;
 }
+.section_service .wrap_cowork.fadeIn {
+    transform: translateY(0);
+    opacity: 1;
+}
 .section_service .wrap_manager {
     position: relative;
     margin: 0 auto;
@@ -678,6 +682,10 @@ body{
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.5s;
+}
+.section_service .wrap_manager.fadeIn {
+    transform: translateY(0);
+    opacity: 1;
 }
 .section_service .wrap_cowork::before {
     display: block;
@@ -766,7 +774,6 @@ body{
     position: relative;
     height: 855px;
     margin-top: 55px;
-    max-width: 12
 }
 .section_service .inner_service {
     position: absolute;
@@ -787,23 +794,27 @@ body{
     right: 93px;
     width: 414px;
 }
-
 .section_smart {
     width: 1080px;
     padding: 0 20px;
     margin: 0 auto;
 }
-
 .section_smart .wrap_product, 
-.section_smart .wrap_assist
-{
+.section_smart .wrap_assist {
     width: 432px;
     height: 462px;
     background: url(../img/body/bg_product.png) 100% 0 no-repeat;
     background-size: 462px 462px;
     padding-right: 648px;
     margin-top: 300px;
+    transform: translateY(50px);
+    opacity: 0;
     transition: transform .5s,opacity .5s linear;
+}
+.section_smart .wrap_product.fadeIn, 
+.section_smart .wrap_assist.fadeIn {
+    transform: translateY(0px);
+    opacity: 1;
 }
 .section_smart .wrap_assist {
     position: relative;
@@ -832,13 +843,11 @@ body{
     background-size: 520px 430px;
     background-position: -170px 0;
 }
-
 .wrap_product .item_tit,
 .wrap_assist .item_tit {
     padding-top: 64px;
     text-align: left;
 }
-
 .wrap_product .item_sub1,
 .wrap_assist .item_sub1 {
     font-size: 16px;
@@ -855,7 +864,13 @@ body{
 .section_secure {
     width: 1080px;
     margin: 263px auto 0;
+    transform: translateY(50px);
+    opacity: 0;
     transition: all .5s;
+}
+.section_secure.fadeIn {
+    transform: translateY(0);
+    opacity: 1;
 }
 .section_secure .secure_tit {
     display: block;
@@ -871,7 +886,6 @@ body{
     box-sizing: border-box;
     padding-top: 234px;
 }
-
 .section_secure .secure_sub1 {
     margin-top: 50px;
     color: #1e1e1e;
@@ -880,11 +894,9 @@ body{
     line-height: 38px;
     letter-spacing: -.5px;
 }
-
 .section_secure .list_E3 {
     margin-top: 100px;
 }
-
 .section_secure .list_E3 li {
     width: 465px;
     float: left;
@@ -914,7 +926,6 @@ body{
     background-position: -170px -140px;
     background-size: 520px 430px;
 }
-
 .section_secure .list_E3 li:nth-child(2) {
     padding-left: 150px;
 }
@@ -931,14 +942,12 @@ body{
     line-height: 28px;
     word-break: keep-all;
 }
-
 .area_suggest {
     position: relative;
     overflow: hidden;
     padding: 114px 0 135px;
     background-color: #182153;
 }
-
 .area_suggest .wrap_suggest {
     width: 1122px;
     padding: 55px 670px 147px 20px;
@@ -946,8 +955,7 @@ body{
     background: url(../img/body/bg_premium.png) 96% 70% no-repeat;
     background-size: 531px 361px;
     box-sizing: border-box;
-}   
-
+}  
 .area_suggest .suggest_tit {
     display: block;
     color: #fff;
@@ -963,7 +971,6 @@ body{
     font-weight: 350;
     line-height: 28px;
 }
-
 .area_suggest .wrap_btn {
     position: absolute;
     bottom: 162px;
@@ -1005,7 +1012,6 @@ body{
     font-size: 16px;
     font-weight: 700;
 }
-
 .doc-footer {
     background: #f7f7f7;
 }

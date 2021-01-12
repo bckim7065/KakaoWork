@@ -1,314 +1,323 @@
-var chkPos = false;
-var items;
-var chkPosAbs = false;
-var chkPosFix = false;
-var chkItmes = new Array();
-var timer = null;
+ var timer = null;
 
-$(document).ready(function(){
-    // slick slide 
-    $('.wrap_slide').slick({
-            autoplay : false,
-            dots: true,
-            speed : 300,
-            infinite: true,
-            autoplaySpeed: 3000 ,
-            arrows: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            fade: false
+        $(document).ready(function(){
+            addWindowEvent();
+            addSlickSlideEvent();
+            addClickEventToElem();
         });
-    
-    // slick slide method
-    $('.wrap_slide').on('afterChange', function(event, slick, currentSlide, nextSlide){
-        var currentSlide = $('.wrap_slide').slick('slickCurrentSlide');
-        
-        if (currentSlide == 1) {
-            $('.doc-header').addClass('second_slide');
-        } else {
-            $('.doc-header').removeClass('second_slide');
-        }
-    });
 
-    $(window).on('scroll', function(){
-        scrollFun();
-    });
-    
-    $(window).on('resize', function(){
-        scrollFun();
-        if (!timer) {
-            setTimeout(function(){
-                timer = null;
+        function addWindowEvent() {
+            $(window).on('scroll', function(){
                 scrollFun();
-            }, 100)
-        }
-    });
 
-    items = $('.item_img');
-    
-    // 이미지 체크 초기화
-    for (var j = 0; j < items.length; j++) {
-        chkItmes[j] = false;
-    }
+                if (!timer) {
+                    setTimeout(function(){
+                        timer = null;
+                        scrollFun();
+                    }, 50)
+                }
+            });
+            
+            $(window).on('resize', function(){
+                scrollFun();
 
-    $('.btn_cowork li').on('click', function(e){
-        var coworkElem = $('.btn_cowork li');
-        var serviceElem = $('.wrap_cowork .cont_service .inner_service');
-
-        for (var i = 0; i < coworkElem.length; i++) {
-            if(coworkElem[i] == this) {
-                $(coworkElem[i]).children().addClass('on');
-                $(serviceElem[i]).addClass('on');
-            } else {
-                $(coworkElem[i]).children().removeClass('on');
-                $(serviceElem[i]).removeClass('on');
-            }   
+                if (!timer) {
+                    setTimeout(function(){
+                        timer = null;
+                        scrollFun();
+                    }, 200)
+                }
+            });
         }
 
-    });
-
-    $('.btn_manager li').on('click', function(e){
-        var managerElem = $('.btn_manager li');
-        var serviceElem = $('.wrap_manager .cont_service .inner_service');
-
-        for (var i = 0; i < managerElem.length; i++) {
-            if(managerElem[i] == this) {
-                $(managerElem[i]).children().addClass('on');
-                $(serviceElem[i]).addClass('on');
-            } else {
-                $(managerElem[i]).children().removeClass('on');
-                $(serviceElem[i]).removeClass('on');
-            }   
+        function addSlickSlideEvent() {
+            // slick slide 
+            $('.wrap_slide').slick({
+                 autoplay : false,
+                 dots: true,
+                 speed : 300,
+                 infinite: true,
+                 autoplaySpeed: 3000 ,
+                 arrows: true,
+                 slidesToShow: 1,
+                 slidesToScroll: 1,
+                 fade: false
+             });
+            
+            // slick slide method
+            $('.wrap_slide').on('afterChange', function(event, slick, currentSlide, nextSlide){
+                var currentSlide = $('.wrap_slide').slick('slickCurrentSlide');
+                
+                if (currentSlide == 1) {
+                    $('.doc-header').addClass('second_slide');
+                } else {
+                    $('.doc-header').removeClass('second_slide');
+                }
+            });
         }
-    });
-
-    $('.btn_relation').on('click', function(e){
-        $('.list_relation').toggleClass('on');
-    });
-
-    // markOn ScrollTop 
-    var arrLinkfuncSc = [1464, 2317, 3169, 5080, 5970];
-
-    $('.link_func').click(function(e) {
-        e.preventDefault();
-
-        var nIndex = $('.link_func').index(this);
-        scrollTo(0, arrLinkfuncSc[nIndex]);
-    });
-});
-
-function init() {
-    
-}
-
-function scrollFun() {
-    var scrollTop = $(document).scrollTop();   
-    var wrapInfoElem = $('.wrap_info');
-    var sectionDescElem = $(".content-home .section_desc");
-    var windowWidth = window.innerWidth;
-    var descEmphElem = $(".content-home .desc_emph");
-    var descImgElem = $(".content-home .desc_img");
-    var pageXOffset = window.pageXOffset;
-    var headerElem = $(".inner_header"); 
-    var groupWorkElem = $(".group_work");
-    var groupSearchkElem = $(".group_search");
-    var groupConnectElem = $(".group_connect");
-    var wrapCoworkElem = $(".wrap_cowork");
-    var wrapManagerElem = $(".wrap_manager");
-    var wrapProductElem = $(".wrap_product");
-    var wrapAssistElem = $(".wrap_assist");
-    var sectionSecure = $(".section_secure");
-    var markOnElem = $('.mark_on');
-    var descEmphEmElem = $(".section_desc .desc_emph em");
-    
-    // Header Check
-    if (scrollTop > 0) {
-        $('.doc-header').addClass('scroll_header');
-    } else {
-        $('.doc-header').removeClass('scroll_header');
-    }
-
-    headerElem.css("transform", "translateX(" + -pageXOffset + "px)");
-
-    if (scrollTop > 6300 && scrollTop <= 6670) {
-        var matxVal = (((scrollTop / 14) - 450) / 100).toFixed(3);
-        var opacity = (((scrollTop / 14) - 450) / 100).toFixed(3);
-        var styleMatrix = 'matrix(' + matxVal + ', 0, 0,' + matxVal + ', 0, 0)';
         
-        descEmphElem.css("transform", "translateX(0)");
+        function addClickEventToElem() {
+            $('.btn_cowork li').on('click', function(e){
+                var coworkElem = $('.btn_cowork li');
+                var serviceElem = $('.wrap_cowork .cont_service .inner_service');
 
-        descImgElem.css('transform', styleMatrix + "translateX(0)");
-        descImgElem.css('top', sectionDescElem.height() / 4 - 300);
-        descImgElem.css('position', 'absolute');
-        descImgElem.css('bottom', 'auto');
-        descImgElem.css('left', windowWidth < 1200 ? -200 : windowWidth / 2 - 800);
-        descImgElem.css('opacity', opacity);
+                for (var i = 0; i < coworkElem.length; i++) {
+                    if(coworkElem[i] == this) {
+                        $(coworkElem[i]).children().addClass('on');
+                        $(serviceElem[i]).addClass('on');
+                    } else {
+                        $(coworkElem[i]).children().removeClass('on');
+                        $(serviceElem[i]).removeClass('on');
+                    }   
+                }
 
-        descEmphEmElem.css('opacity', opacity);
-    } else if (scrollTop > 6670 && scrollTop < 8000) {
-        var matxVal = (((scrollTop / 14) - 450) / 100).toFixed(3) > 1 ? 1 : (((scrollTop / 14) - 450) / 100).toFixed(3);
-        var opacity = (((scrollTop / 14) - 450) / 100).toFixed(3);
-        var styleMatrix = 'matrix(' + matxVal + ', 0, 0,' + matxVal + ', 0, 0)';
-        
-        descEmphElem.css("position") == "fixed" ? descEmphElem.css("transform", "translateX(" + -pageXOffset + "px)") : descEmphElem.css("transform", "translateX(0)");
+            });
 
-        descImgElem.css('transform', styleMatrix + " translateX(" + -4.5*(1 - matxVal)*pageXOffset + "px)");
-        descImgElem.css('top', sectionDescElem.height() / 4 - 300);
-        descImgElem.css('position', 'fixed');
-        descImgElem.css('bottom', 'auto');
-        descImgElem.css('left', windowWidth < 1200 ? -200 : windowWidth / 2 - 800);
-        descImgElem.css('opacity', opacity);
+            $('.btn_manager li').on('click', function(e){
+                var managerElem = $('.btn_manager li');
+                var serviceElem = $('.wrap_manager .cont_service .inner_service');
 
-        descEmphEmElem.css('opacity', opacity);
-    } else {
-        descEmphElem.css("transform", "translateX(0)");
-        descImgElem.css('transform', styleMatrix + "translateX(0)");
+                for (var i = 0; i < managerElem.length; i++) {
+                    if(managerElem[i] == this) {
+                        $(managerElem[i]).children().addClass('on');
+                        $(serviceElem[i]).addClass('on');
+                    } else {
+                        $(managerElem[i]).children().removeClass('on');
+                        $(serviceElem[i]).removeClass('on');
+                    }   
+                }
+            });
 
-        descImgElem.css('opacity', 0);
-        descEmphEmElem.css('opacity', 0);
-    }
+            // 관련사이트
+            $('.btn_relation').on('click', function(e){
+                $('.list_relation').toggleClass('on');
+            });
 
-    // Position Check
-    if (scrollTop >= 7670) {
-        descEmphElem.css('position', 'absolute'); 
-        descEmphElem.css('top', 'auto'); 
-        descEmphElem.css('bottom', '359px'); 
+            // 이미지 앵커
+            $('.link_func').click(function(e) {
+                e.preventDefault();
+                var index = $('.link_func').index(this) >= 3 ? $('.link_func').index(this) + 1 : $('.link_func').index(this);
+                var imgList = $('.item_img');
+                var docHeaderElem = $('.doc-header');
+                var scrollY = Math.ceil((imgList[index]).getBoundingClientRect().top + document.documentElement.scrollTop - docHeaderElem.outerHeight() - 160);
 
-        descImgElem.css('position', 'absolute'); 
-        descImgElem.css('left', '151.5px'); 
-        descImgElem.css('top', 'auto');
-        descImgElem.css('bottom', '102.5px'); 
-    } else if (scrollTop >= 6670 && scrollTop < 7670) {
-        descEmphElem.css('position', 'fixed'); 
-        descEmphElem.css('top', '421.5px'); 
-        descEmphElem.css('bottom', 'auto'); 
-    } else {
-        descEmphElem.css('position', 'absolute'); 
-        descEmphElem.css('top', '421.5px'); 
-        descEmphElem.css('bottom', 'auto'); 
-    }
-
-    if (!chkPosAbs && (scrollTop >= 5941 && scrollTop <= 6550)) {
-        chkPosAbs = true;
-        chkPosFix = false;
-
-        wrapInfoElem.css('position', 'absolute'); 
-        wrapInfoElem.css('top', '2598px'); 
-    } else if (!chkPosFix && (scrollTop >= 5071 && scrollTop <= 5940)) {
-        chkPosAbs = false;
-        chkPosFix = true;
-
-        wrapInfoElem.css('position', 'fixed'); 
-        wrapInfoElem.css('top', '-1802px'); 
-    } else if (!chkPosAbs && (scrollTop >= 3200 && scrollTop <= 5070))  {
-        chkPosAbs = true;
-        chkPosFix = false;
-
-        wrapInfoElem.css('position', 'absolute'); 
-        wrapInfoElem.css('top', '1732px'); 
-    } else if (!chkPosFix && (scrollTop >= 1464 && scrollTop < 3200)) {
-        chkPosAbs = false;
-        chkPosFix = true;
-
-        wrapInfoElem.css('position', 'fixed'); 
-        wrapInfoElem.css('top', '70px'); 
-    } else if (!chkPosAbs && scrollTop < 1464) {
-        chkPosAbs = true;
-        chkPosFix = false;
-
-        wrapInfoElem.css('position', 'absolute'); 
-        wrapInfoElem.css('top', '0px'); 
-    }
-
-    if (chkPosFix) {
-        groupWorkElem.css("transform", "translateX(" + -pageXOffset + "px)");
-        groupSearchkElem.css("transform", "translateX(" + -pageXOffset + "px)");
-        groupConnectElem.css("transform", "translateX(" + -pageXOffset + "px)");
-    } else {
-        groupWorkElem.css("transform", "translateX(0)");
-        groupSearchkElem.css("transform", "translateX(0)");
-        groupConnectElem.css("transform", "translateX(0)");
-    }
-
-    // Image Check
-    if (!chkItmes[5] && scrollTop >= 5521) { 
-        enableActive(items, 5);
-        markOnElem.css('transform', 'translateY(37px)');
-    } else if (!chkItmes[4] && (scrollTop >= 4651 && scrollTop <= 5520)) {
-        enableActive(items, 4);
-        markOnElem.css('transform', 'translateY(0)');
-    } else if (!chkItmes[3] && (scrollTop >= 3711 && scrollTop <= 4650)) { 
-        enableActive(items, 3);
-    } else if (!chkItmes[2] && (scrollTop >= 2781 && scrollTop <= 3710)) {
-        enableActive(items, 2);
-        markOnElem.css('transform', 'translateY(74px)');
-    } else if (!chkItmes[1] && (scrollTop >= 1860 && scrollTop <= 2780)) {
-        enableActive(items, 1);
-        markOnElem.css('transform', 'translateY(37px)');
-    } else if (!chkItmes[1] && (scrollTop >= 1850 && scrollTop < 1860)) {
-        enableActive(items, 1);
-        markOnElem.css('transform', 'translateY(37px)');
-    } else if (!chkItmes[0] && scrollTop < 1830) {
-        enableActive(items, 0);
-        markOnElem.css('transform', 'translateY(0)');
-    } 
-
-    // fade-in Start
-    // cowork
-    if (scrollTop >= 8000 && scrollTop <= 10250) {
-        wrapCoworkElem.css('transform', 'translateY(0)');
-        wrapCoworkElem.css('opacity', '1');
-    } else {
-        wrapCoworkElem.css('transform', 'translateY(50px)');
-        wrapCoworkElem.css('opacity', '0');
-    }
-
-    // manager
-    if (scrollTop >= 9500 && scrollTop <= 11580) {
-        wrapManagerElem.css('transform', 'translateY(0)');
-        wrapManagerElem.css('opacity', '1');
-    } else {
-        wrapManagerElem.css('transform', 'translateY(50px)');
-        wrapManagerElem.css('opacity', '0');
-    } 
-
-    // product
-    if (scrollTop >= 11000 && scrollTop <= 12500) {
-        wrapProductElem.css('transform', 'translateY(0)');
-        wrapProductElem.css('opacity', '1');
-    } else {
-        wrapProductElem.css('transform', 'translateY(50px)');
-        wrapProductElem.css('opacity', '0');
-    }
-
-    // assist
-    if (scrollTop >= 11900 && scrollTop <= 13300) {
-        wrapAssistElem.css('transform', 'translateY(0)');
-        wrapAssistElem.css('opacity', '1');
-    } else {
-        wrapAssistElem.css('transform', 'translateY(50px)');
-        wrapAssistElem.css('opacity', '0');
-    }
-
-    // secure
-    if (scrollTop >= 12600 && scrollTop <= 14600) {
-        sectionSecure.css('transform', 'translateY(0)');
-        sectionSecure.css('opacity', '1');
-    } else {
-        sectionSecure.css('transform', 'translateY(50px)');
-        sectionSecure.css('opacity', '0');
-    }
-    // fade-in End
-}
-
-function enableActive(element, index) {
-    for (var i = 0; i < element.length; i++) {
-        if (index == i) {
-            $(items[i]).addClass('item_active');
-            chkItmes[i] = true;
-        } else {
-            chkItmes[i] = false;
-            $(items[i]).removeClass('item_active');
+                document.documentElement.scrollTop = scrollY;
+            });
         }
-    }
-}
+
+        function scrollFun() {
+            var scrollTop = $(window).scrollTop();   
+            var docHeaderElem = $(".doc-header");
+            var wrapInfoElem = $(".wrap_info");
+            var sectionDescElem = $(".content-home .section_desc");
+            var sectionServiceElem = $(".section_service");
+            var windowWidth = window.innerWidth;
+            var descEmphElem = $(".content-home .desc_emph");
+            var descImgElem = $(".content-home .desc_img");
+            var pageXOffset = window.pageXOffset;
+            var innerHeaderElem = $(".inner_header"); 
+            var groupWorkElem = $(".group_work");
+            var groupSearchkElem = $(".group_search");
+            var groupConnectElem = $(".group_connect");
+            var descEmphEmElem = $(".section_desc .desc_emph em");
+            var imgList = $(".item_img");
+            var initScrollTop = 0;
+            
+            // Header Check
+            docHeaderElem.toggleClass("scroll_header", scrollTop > 0);
+            innerHeaderElem.css("transform", "translateX(" + -pageXOffset + "px)");
+
+            scrollToDesc();
+            scrollToImage();
+            scrollToFadeIn();
+
+            function scrollToImage() {
+                var ImgListRect = new Array();
+                var wrapInfoChildDiv = $(".wrap_info > div");
+                var wrapInfoChildDivImgCnt = [3, 1, 2];
+                var totHeight = 0;
+                var ImgIndex = 0;
+                var cnt = 0;
+                var posImgCnt = 0;
+                var marginTop = 160;
+                
+                for (var i = 0; i < wrapInfoChildDiv.length; i++) {
+                    totHeight = 0;
+
+                    for (var j = 0; j < wrapInfoChildDivImgCnt[i]; j++) {
+                        totHeight += $(imgList[cnt]).outerHeight(true);
+                        cnt++;
+                    }
+
+                    ImgIndex = cnt - wrapInfoChildDivImgCnt[i];
+
+                    ImgListRect.push(
+                        {
+                            top : $(imgList[ImgIndex]).offset().top - marginTop,
+                            bottom : $(imgList[ImgIndex]).offset().top + totHeight - marginTop
+                        }
+                    )
+                }
+
+                initScrollTop = scrollTop + docHeaderElem.outerHeight();
+
+                if (initScrollTop < ImgListRect[0].top) {
+                    wrapInfoElem.css({position: 'absolute', top: 0, bottom: 'auto'}); 
+
+                    groupWorkElem.css("transform", "translateX(0)");
+                    groupSearchkElem.css("transform", "translateX(0)");
+                    groupConnectElem.css("transform", "translateX(0)");
+                } else {    
+                    for (var i = 0; i < wrapInfoChildDiv.length; i++) {
+                        posImgCnt += wrapInfoChildDivImgCnt[i];
+
+                        if (initScrollTop >= ImgListRect[i].top && initScrollTop <= ImgListRect[i].bottom) {
+                            if (initScrollTop < ImgListRect[i].bottom - wrapInfoChildDiv[0].offsetHeight) {
+                                wrapInfoElem.css({
+                                    position: "fixed",
+                                    top: docHeaderElem.outerHeight() - wrapInfoChildDiv[0].offsetHeight * i,
+                                    bottom: "auto",
+                                    width: "50%" 
+                                });   
+
+                                groupWorkElem.css("transform", "translateX(" + -pageXOffset + "px)");
+                                groupSearchkElem.css("transform", "translateX(" + -pageXOffset + "px)");
+                                groupConnectElem.css("transform", "translateX(" + -pageXOffset + "px)");
+                            } else {
+                                var offSet = parseInt($(wrapInfoChildDiv[i]).css("paddingTop"), 10) - parseInt($(imgList[posImgCnt - 1]).css("marginTop"), 10);
+                                wrapInfoElem.css({
+                                    position: "absolute",
+                                    top: $(imgList[posImgCnt - 1]).position().top - wrapInfoChildDiv[0].offsetHeight * i - offSet,
+                                    bottom: "auto",
+                                    width: "50%"
+                                });
+
+                                groupWorkElem.css("transform", "translateX(0)");
+                                groupSearchkElem.css("transform", "translateX(0)");
+                                groupConnectElem.css("transform", "translateX(0)");
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+                // fade in area
+                var ImgStddScrollTop = new Array();
+                var workMarkOn = $('.group_work .mark_on');
+                var connectMarkOn = $('.group_connect .mark_on');
+                initScrollTop = scrollTop + docHeaderElem.outerHeight() + marginTop + imgList[0].offsetHeight * 0.5;
+
+                for (var i = 0; i < imgList.length; i++) {
+                    var curElementScrollY = imgList[i].getBoundingClientRect().top + document.documentElement.scrollTop;
+                    ImgStddScrollTop.push(curElementScrollY);
+                }
+
+                if (initScrollTop > ImgStddScrollTop[0] && initScrollTop <= ImgStddScrollTop[1]) {
+                    $(imgList[0]).addClass("item_active").siblings().removeClass("item_active");
+                    workMarkOn.addClass("one").removeClass("second third");
+                } else if (initScrollTop > ImgStddScrollTop[1] && initScrollTop <= ImgStddScrollTop[2]) {
+                    $(imgList[1]).addClass("item_active").siblings().removeClass("item_active");
+                    workMarkOn.addClass("second").removeClass("one third");
+                } else if (initScrollTop > ImgStddScrollTop[2] && initScrollTop <= ImgStddScrollTop[3]) {
+                    $(imgList[2]).addClass("item_active").siblings().removeClass("item_active");
+                    workMarkOn.addClass("third").removeClass("second one");
+                } else if (initScrollTop > ImgStddScrollTop[3] && initScrollTop <= ImgStddScrollTop[4]) {
+                    $(imgList[3]).addClass("item_active").siblings().removeClass("item_active");
+                } else if (initScrollTop > ImgStddScrollTop[4] && initScrollTop <= ImgStddScrollTop[5]) {
+                    $(imgList[4]).addClass("item_active").siblings().removeClass("item_active");
+                    connectMarkOn.addClass("one").removeClass("second");
+                } else if (initScrollTop > ImgStddScrollTop[5]) {
+                    $(imgList[5]).addClass("item_active").siblings().removeClass("item_active");
+                    connectMarkOn.addClass("second").removeClass("one");
+                }
+            }
+
+            function scrollToDesc() {
+                initScrollTop = scrollTop + docHeaderElem.outerHeight();
+                var matxVal = 0;
+                var opacity = 0;
+                var styleMatrix = "";
+                var defaultMatrix = 0.3;
+                var defaultOpacity = 0.5;
+                var sectionDescTop = sectionDescElem.offset().top;
+                var sectionDescBottom = sectionServiceElem.offset().top;
+                
+                if (initScrollTop < sectionDescElem.offset().top) {
+                    styleMatrix = 'matrix(' + defaultMatrix + ', 0, 0,' + defaultMatrix + ', 0, 0)';
+
+                    // descEmph
+                    descEmphElem.css('position', 'absolute'); 
+                    descEmphElem.css('top', '421.5px'); 
+                    descEmphElem.css('bottom', 'auto'); 
+                    descEmphElem.css("transform", "translateX(0)");
+                    descEmphEmElem.css('opacity', defaultOpacity);
+
+                    // descImg
+                    descImgElem.css('position', 'relative'); 
+                    descImgElem.css('transform', styleMatrix + "translateX(0)");
+                    descImgElem.css('top', sectionDescElem.height() / 4 - 300);
+                    descImgElem.css('bottom', 'auto');
+                    descImgElem.css('left', windowWidth < 1200 ? -200 : windowWidth / 2 - 800);
+                    descImgElem.css('opacity', defaultOpacity);
+                } else if (initScrollTop > sectionDescTop && (scrollTop + window.innerHeight) <= sectionDescBottom) {
+                    matxVal = Math.min(1, ((initScrollTop - sectionDescTop) / (sectionDescElem.outerHeight() / 2)).toFixed(3));
+                    opacity = Math.min(1, ((initScrollTop - sectionDescTop) / (sectionDescElem.outerHeight() / 2)).toFixed(3));
+                    styleMatrix = 'matrix(' + (defaultMatrix + matxVal * (1 - defaultMatrix)) + ', 0, 0,' + (defaultMatrix + matxVal * (1 - defaultMatrix)) + ', 0, 0)';
+                    
+                    // descEmph
+                    descEmphElem.css('position', 'fixed'); 
+                    descEmphElem.css('top', '440px'); 
+                    descEmphElem.css('bottom', 'auto'); 
+                    descEmphElem.css("position") == "fixed" ? descEmphElem.css("transform", "translateX(" + -pageXOffset + "px)") : descEmphElem.css("transform", "translateX(0)");
+                    descEmphEmElem.css('opacity', defaultOpacity + opacity * (1 - defaultOpacity));
+
+                    // descImg
+                    descImgElem.css('position', 'fixed');
+                    descImgElem.css('transform', styleMatrix + " translateX(" + -4.5 * (1 - (defaultMatrix + matxVal * (1 - defaultMatrix))) * pageXOffset + "px)");
+                    descImgElem.css('top', sectionDescElem.height() / 4 - 300);
+                    descImgElem.css('bottom', 'auto');
+                    descImgElem.css('left', windowWidth < 1200 ? -200 : windowWidth / 2 - 800);
+                    descImgElem.css('opacity', defaultOpacity + opacity * (1 - defaultOpacity));
+                } else {
+                    var offSetTop = sectionServiceElem.offset().top - window.innerHeight - sectionDescTop;
+                    var descEmphElemTop = 430 + offSetTop;
+                    var descImgElemTop = sectionDescElem.height() / 4 - 300 + offSetTop;
+
+                    // descEmph
+                    descEmphElem.css('position', 'absolute'); 
+                    descEmphElem.css('top', descEmphElemTop); 
+                    descEmphElem.css('bottom', 'auto'); 
+                    descEmphElem.css("transform", "translateX(0)");
+                    descEmphEmElem.css('opacity', 1);
+
+                    // descImgElem
+                    descImgElem.css('position', 'absolute'); 
+                    descImgElem.css('transform', styleMatrix + "translateX(0)");
+                    descImgElem.css('top', descImgElemTop);
+                    descImgElem.css('opacity', 1);
+                    
+                }
+            }
+
+            function scrollToFadeIn() {
+                var coworkContService = $(".wrap_cowork .cont_service");
+                var managerContService = $(".wrap_manager .cont_service");
+                var wrapProductElem = $(".wrap_product");
+                var wrapAssistElem = $(".wrap_assist");
+                var sectionSecure = $(".section_secure");
+                var fadeInList = [coworkContService, managerContService, wrapProductElem, wrapAssistElem, sectionSecure];
+
+                for (var i = 0; i < fadeInList.length; i++) {
+                    var windowHeight = $(window).outerHeight();
+                    var clientTop = fadeInList[i].get(0).getBoundingClientRect().top;
+                    var clientBottom = fadeInList[i].get(0).getBoundingClientRect().bottom;
+
+                    if (i == 0 || i == 1) {
+                        fadeInList[i].parent().toggleClass("fadeIn", clientTop < windowHeight && clientBottom > 0)   
+                    } else {
+                        fadeInList[i].toggleClass("fadeIn", clientTop < windowHeight && clientBottom > 0)    
+                    }
+                }
+            }
+        }
