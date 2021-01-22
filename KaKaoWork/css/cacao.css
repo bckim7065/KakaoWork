@@ -423,7 +423,7 @@ body{
 .section_func .group_search .inner_info .info_sub, 
 .section_func .group_work .inner_info .info_sub,
 .section_func .group_connect .inner_info .info_sub {
-    width: 365px;
+    width: 380px;
     margin-top: 28px;
     font-size: 16px;
     font-weight: 350
@@ -456,7 +456,9 @@ body{
 .group_connect .inner_info .tabfunc .list_func {
     margin-top: 45px;
 }
-.group_work .inner_info .tabfunc .list_func li {
+.group_work .inner_info .tabfunc .list_func li.on a, 
+.group_connect .inner_info .tabfunc .list_func li.on a {
+    color: #0082ff;
 }
 .group_work .inner_info .tabfunc .list_func li+li,
 .group_connect .inner_info .tabfunc .list_func li+li {

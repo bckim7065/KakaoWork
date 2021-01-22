@@ -94,7 +94,7 @@
             var imgList = $('.item_img');
             var docHeaderElem = $('.doc-header');
             var scrollY = Math.ceil((imgList[index]).getBoundingClientRect().top + document.documentElement.scrollTop - docHeaderElem.outerHeight() - 160);
-    
+    	    $(e.currentTarget).parent().addClass("on").siblings().removeClass("on");
             document.documentElement.scrollTop = scrollY;
         });
     }
@@ -201,6 +201,8 @@
             var ImgStddScrollTop = new Array();
             var workMarkOn = $('.group_work .mark_on');
             var connectMarkOn = $('.group_connect .mark_on');
+	    var workListFuncLiElem = $(".group_work .list_func li");
+            var connectListFuncLiElem  = $(".group_connect .list_func li");
             initScrollTop = scrollTop + docHeaderElem.outerHeight() + marginTop + imgList[0].offsetHeight * 0.5;
     
             for (var i = 0; i < imgList.length; i++) {
@@ -211,20 +213,25 @@
             if (initScrollTop > ImgStddScrollTop[0] && initScrollTop <= ImgStddScrollTop[1]) {
                 $(imgList[0]).addClass("item_active").siblings().removeClass("item_active");
                 workMarkOn.addClass("one").removeClass("second third");
+                $(workListFuncLiElem.get(0)).addClass("on").siblings().removeClass("on");
             } else if (initScrollTop > ImgStddScrollTop[1] && initScrollTop <= ImgStddScrollTop[2]) {
                 $(imgList[1]).addClass("item_active").siblings().removeClass("item_active");
                 workMarkOn.addClass("second").removeClass("one third");
+                $(workListFuncLiElem.get(1)).addClass("on").siblings().removeClass("on");
             } else if (initScrollTop > ImgStddScrollTop[2] && initScrollTop <= ImgStddScrollTop[3]) {
                 $(imgList[2]).addClass("item_active").siblings().removeClass("item_active");
                 workMarkOn.addClass("third").removeClass("second one");
+                $(workListFuncLiElem.get(2)).addClass("on").siblings().removeClass("on");
             } else if (initScrollTop > ImgStddScrollTop[3] && initScrollTop <= ImgStddScrollTop[4]) {
                 $(imgList[3]).addClass("item_active").siblings().removeClass("item_active");
             } else if (initScrollTop > ImgStddScrollTop[4] && initScrollTop <= ImgStddScrollTop[5]) {
                 $(imgList[4]).addClass("item_active").siblings().removeClass("item_active");
                 connectMarkOn.addClass("one").removeClass("second");
+                $(connectListFuncLiElem.get(0)).addClass("on").siblings().removeClass("on");
             } else if (initScrollTop > ImgStddScrollTop[5]) {
                 $(imgList[5]).addClass("item_active").siblings().removeClass("item_active");
                 connectMarkOn.addClass("second").removeClass("one");
+                $(connectListFuncLiElem.get(1)).addClass("on").siblings().removeClass("on");
             }
         }
     
